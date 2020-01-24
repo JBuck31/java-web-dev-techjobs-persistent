@@ -1,8 +1,6 @@
 package org.launchcode.javawebdevtechjobspersistent.controllers;
 
-import org.launchcode.javawebdevtechjobspersistent.models.Employer;
 import org.launchcode.javawebdevtechjobspersistent.models.Skill;
-import org.launchcode.javawebdevtechjobspersistent.models.data.EmployerRepository;
 import org.launchcode.javawebdevtechjobspersistent.models.data.SkillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +21,7 @@ public class SkillController {
     @GetMapping("add")
     public String displayAddSkillForm(Model model) {
         model.addAttribute(new Skill());
+       /* model.addAttribute("skills", skillRepository.findAll()); WHERE DOES THIS GO? */
         return "skills/add";
     }
 
@@ -36,6 +35,7 @@ public class SkillController {
         }
 
         skillRepository.save(newSkill);
+        model.addAttribute("skills", skillRepository.findAll());
         return "redirect:";
     }
 
