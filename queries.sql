@@ -1,4 +1,8 @@
-## Part 1: Test it with SQL
+## Part 1: Test it with SQL list the columns and their data types in the table.
+##Is this all it wants??
+
+SELECT *
+FROM techjobs.job;
 
 ## Part 2: Test it with SQL
 
