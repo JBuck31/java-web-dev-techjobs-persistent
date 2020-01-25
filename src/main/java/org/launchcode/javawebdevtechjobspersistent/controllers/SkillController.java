@@ -18,10 +18,17 @@ public class SkillController {
     @Autowired
     private SkillRepository skillRepository;
 
+    @GetMapping
+    public String displayAllSkills(Model model) {
+        model.addAttribute("title", "All Skills");
+        model.addAttribute("skills", skillRepository.findAll());
+        return "skills/index";
+    }
+
     @GetMapping("add")
     public String displayAddSkillForm(Model model) {
+        model.addAttribute("title", "Add Skill");
         model.addAttribute(new Skill());
-       /* model.addAttribute("skills", skillRepository.findAll()); WHERE DOES THIS GO? */
         return "skills/add";
     }
 
@@ -35,12 +42,11 @@ public class SkillController {
         }
 
         skillRepository.save(newSkill);
-        model.addAttribute("skills", skillRepository.findAll());
         return "redirect:";
     }
 
     @GetMapping("view/{skillId}")
-    public String displayViewEmployer(Model model, @PathVariable int skillId) {
+    public String displayViewSkill(Model model, @PathVariable int skillId) {
 
         Optional optSkill = skillRepository.findById(skillId);
         if (optSkill.isPresent()) {
