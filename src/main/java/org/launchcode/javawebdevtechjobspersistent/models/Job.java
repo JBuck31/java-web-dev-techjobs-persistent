@@ -3,10 +3,11 @@ package org.launchcode.javawebdevtechjobspersistent.models;
 import javax.persistence.*;
 
 @Entity
-public class Job extends AbstractEntity{
+public class Job extends AbstractEntity{ //from part 3 inherits id and name fields
 
     @ManyToOne
-    private Employer employer;
+    private Employer employer; //part 3
+
     private String skills;
 
     public Job() {
@@ -18,9 +19,9 @@ public class Job extends AbstractEntity{
         this.skills = someSkills;
     }
 
-    // Getters and setters.
-    public Employer getEmployer() {
-        return employer;
+    // Getters and setters. Refactored in part 3
+    public String getEmployer() {
+        return String.valueOf(employer);
     }
 
     public void setEmployer(Employer employer) {

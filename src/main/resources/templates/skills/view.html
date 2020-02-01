@@ -7,11 +7,12 @@
 
 <nav th:replace="fragments :: page-header"></nav>
 
+
 <div class="job-listing">
     <p th:text="${'Name: ' + skill.name}"></p>
     <p th:text="${'Description: ' + skill.description}"></p>
-<!--    This section was in original code. Should it be here? Or is it errata?-->
-<!--    Skills view doesn't work in Part 2 if it's here.-->
+
+    <!--PUT THIS BACK IN AFTER DOING JOBS! -->
 <!--    <p> Jobs:-->
 <!--        <ul>-->
 <!--            <li th:each="job : ${skill.jobs}">-->
@@ -19,4 +20,4 @@
 <!--            </li>-->
 <!--        </ul>-->
 <!--    </p>-->
-</div>
+<!--</div>-->

@@ -19,13 +19,13 @@ import java.util.List;
 public class HomeController {
 
     @Autowired
-    private EmployerRepository employerRepository;
+    private EmployerRepository employerRepository; //Part 3
 
     @RequestMapping("")
     public String index(Model model) {
 
         model.addAttribute("title", "My Jobs");
-
+        model.addAttribute("employers", employerRepository.findAll());
         return "index";
     }
 
@@ -45,6 +45,7 @@ public class HomeController {
             return "add";
         }
 
+        model.addAttribute("employerId", employerRepository.findById(employerId));
         return "redirect:";
     }
 
