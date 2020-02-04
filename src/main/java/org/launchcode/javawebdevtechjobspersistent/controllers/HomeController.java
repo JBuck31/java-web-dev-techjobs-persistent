@@ -57,7 +57,7 @@ public class HomeController {
         }
 
 
-//        //Part 3 HomeController 5 NONE OF THIS IS RIGHT! I need to figure out how to put the employer info into the table
+//        //Part 3 HomeController 5 NONE OF THIS IS RIGHT! I need to figure out where to put .get and look at <Optionals>
         Optional<Employer> employer = employerRepository.findById(employerId); //keep this
         model.addAttribute("employer", employer);//probably don't need this
         jobRepository.save(newJob); //fix this
