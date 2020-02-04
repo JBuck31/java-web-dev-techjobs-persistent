@@ -35,4 +35,6 @@ public class Job extends AbstractEntity{ //from part 3 inherits id and name fiel
     public void setSkills(String skills) {
         this.skills = skills;
     }
+
+
 }

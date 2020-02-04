@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by LaunchCode
@@ -51,11 +52,14 @@ public class HomeController {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Job");
+            model.addAttribute(new Job());
             return "add";
         }
 
-        model.addAttribute("employer", employerRepository.findById(employerId)); //Part 3 HomeController 5 Not sure if my attribute name is correct(should it be employerId?
-        model.addAttribute("skill", skillRepository.findAllById(skills));//assuming I need this? Might be wrong
+
+//        //Part 3 HomeController 5 NONE OF THIS IS RIGHT! I need to figure out how to put the employer info into the table
+        Optional<Employer> employer = employerRepository.findById(employerId);
+        model.addAttribute("employer", employer);
         jobRepository.save(newJob);
         return "redirect:";
     }
