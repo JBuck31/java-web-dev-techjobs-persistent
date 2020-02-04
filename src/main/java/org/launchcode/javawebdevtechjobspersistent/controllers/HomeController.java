@@ -52,15 +52,15 @@ public class HomeController {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Job");
-            model.addAttribute(new Job());
+//            model.addAttribute(new Job()); Victoria says I don't need this
             return "add";
         }
 
 
 //        //Part 3 HomeController 5 NONE OF THIS IS RIGHT! I need to figure out how to put the employer info into the table
-        Optional<Employer> employer = employerRepository.findById(employerId);
-        model.addAttribute("employer", employer);
-        jobRepository.save(newJob);
+        Optional<Employer> employer = employerRepository.findById(employerId); //keep this
+        model.addAttribute("employer", employer);//probably don't need this
+        jobRepository.save(newJob); //fix this
         return "redirect:";
     }
 
