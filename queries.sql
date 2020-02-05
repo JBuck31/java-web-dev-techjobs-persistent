@@ -8,7 +8,7 @@ FROM techjobs.job;
 
 SELECT *
 FROM techjobs.employer
-Where location="St. Louis City";
+Where location="St. Louis";
 
 ## Part 3: Test it with SQL
 DROP TABLE job;

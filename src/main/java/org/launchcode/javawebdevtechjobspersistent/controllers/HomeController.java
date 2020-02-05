@@ -48,19 +48,21 @@ public class HomeController {
 
     @PostMapping("add")
     public String processAddJobForm(@ModelAttribute @Valid Job newJob,
-                                       Errors errors, Model model, @RequestParam int employerId, @RequestParam List<Integer> skills) {
+                                       Errors errors, Model model, @RequestParam int employerId, @RequestParam(required = false) List<Integer> skills) {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Job");
-//            model.addAttribute(new Job()); Victoria says I don't need this
             return "add";
         }
 
 
-//        //Part 3 HomeController 5 NONE OF THIS IS RIGHT! I need to figure out where to put .get and look at <Optionals>
-        Optional<Employer> employer = employerRepository.findById(employerId); //keep this
-        model.addAttribute("employer", employer);//probably don't need this
-        jobRepository.save(newJob); //fix this
+//        //Part 3 HomeController 5 SOME OF THIS IS RIGHT! I need to figure out where to put .get and look at <Optionals>
+        Optional<Employer> targetEmployer = employerRepository.findById(employerId); //keep this
+//        model.addAttribute("employer", targetEmployer);//probably don't need this
+//        Employer employer = targetEmployer.get();
+//        model.addAttribute("employer_id", employer.getId());
+//        model.addAttribute("jobs", employer.getJobs());
+        jobRepository.save(newJob); //fix this?
         return "redirect:";
     }
 
@@ -72,3 +74,5 @@ public class HomeController {
 
 
 }
+
+//*EMPLOYER ID IS NOT BEING SET SO THE NEW TABLE WON'T RECREATE. FIX THIS BEFORE YOU CAN MOVE ON
