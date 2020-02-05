@@ -2,6 +2,7 @@ package org.launchcode.javawebdevtechjobspersistent.controllers;
 
 import org.launchcode.javawebdevtechjobspersistent.models.Employer;
 import org.launchcode.javawebdevtechjobspersistent.models.Job;
+import org.launchcode.javawebdevtechjobspersistent.models.Skill;
 import org.launchcode.javawebdevtechjobspersistent.models.data.EmployerRepository;
 import org.launchcode.javawebdevtechjobspersistent.models.data.JobRepository;
 import org.launchcode.javawebdevtechjobspersistent.models.data.SkillRepository;
@@ -48,7 +49,7 @@ public class HomeController {
 
     @PostMapping("add")
     public String processAddJobForm(@ModelAttribute @Valid Job newJob,
-                                       Errors errors, Model model, @RequestParam int employerId, @RequestParam(required = false) List<Integer> skills) {
+                                       Errors errors, Model model, @RequestParam int employerId, @RequestParam List<Integer> skills) {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Job");
@@ -58,11 +59,10 @@ public class HomeController {
 
 //        //Part 3 HomeController 5 SOME OF THIS IS RIGHT! I need to figure out where to put .get and look at <Optionals>
         Optional<Employer> targetEmployer = employerRepository.findById(employerId); //keep this
-//        model.addAttribute("employer", targetEmployer);//probably don't need this
-//        Employer employer = targetEmployer.get();
-//        model.addAttribute("employer_id", employer.getId());
-//        model.addAttribute("jobs", employer.getJobs());
-        jobRepository.save(newJob); //fix this?
+        Iterable<Skill> targetSkill = skillRepository.findAllById(skills); //not sure what to do with this yet
+        Employer employer = targetEmployer.get();
+        newJob.setEmployer(employer); //passes employerId into job table
+        jobRepository.save(newJob);   //fix this?
         return "redirect:";
     }
 
@@ -74,5 +74,3 @@ public class HomeController {
 
 
 }
-
-//*EMPLOYER ID IS NOT BEING SET SO THE NEW TABLE WON'T RECREATE. FIX THIS BEFORE YOU CAN MOVE ON
