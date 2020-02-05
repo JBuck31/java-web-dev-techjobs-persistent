@@ -36,5 +36,11 @@ public class Job extends AbstractEntity{ //from part 3 inherits id and name fiel
         this.skills = skills;
     }
 
-
+    @Override
+    public String toString() {
+        return "Job{" +
+                "employer=" + employer +
+                ", skills='" + skills + '\'' +
+                '}';
+    }
 }

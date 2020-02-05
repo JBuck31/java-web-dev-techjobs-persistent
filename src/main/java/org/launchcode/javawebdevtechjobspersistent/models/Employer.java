@@ -41,7 +41,13 @@ public class Employer extends AbstractEntity {
         return jobs;
     }
 
-
+    @Override
+    public String toString() {
+        return "Employer{" +
+                "location='" + location + '\'' +
+                ", jobs=" + jobs +
+                '}';
+    }
 }
 
 

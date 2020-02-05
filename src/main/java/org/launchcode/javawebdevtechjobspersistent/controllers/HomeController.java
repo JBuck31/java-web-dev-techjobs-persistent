@@ -66,15 +66,20 @@ public class HomeController {
         return "redirect:";
     }
 
-    @GetMapping("view/{jobId}") //code works, but can't find job.employee.id in the view
+    @GetMapping("view/{jobId}") //code works, but can't find job.employer.id in the view
     public String displayViewJob(Model model, @PathVariable int jobId) {
 
-        Optional optJob = jobRepository.findById(jobId);
+        Optional<Job> optJob = jobRepository.findById(jobId); //keep this
         if(optJob.isPresent()) {
-            Job job = (Job) optJob.get();
-            model.addAttribute("job", job);
+            Job job = optJob.get(); //keep this
+            model.addAttribute("job", job); //keep this
+//            model.addAttribute("employer", job.getEmployer());
+//            model.addAttribute("id", job.getId());
+//            model.addAttribute("skills", job.getSkills());
+
             return "view";
         }
+
         return "redirect:../";
     }
 
