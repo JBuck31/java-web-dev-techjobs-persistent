@@ -33,6 +33,10 @@ public class Job extends AbstractEntity{ //from part 3 inherits id and name fiel
         this.employer = employer;
     }
 
+    public void setSkills(List<Skill> skills) {
+        this.skills = skills;
+    }
+
     public List<Skill> getSkills() {
         return skills;
     }

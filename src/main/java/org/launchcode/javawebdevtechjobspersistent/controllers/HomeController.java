@@ -26,7 +26,7 @@ public class HomeController {
     private EmployerRepository employerRepository; //Part 3
 
     @Autowired
-    private SkillRepository skillRepository; //I'm assuming I need this Part 3
+    private SkillRepository skillRepository;
 
     @Autowired
     private JobRepository jobRepository;
@@ -59,8 +59,9 @@ public class HomeController {
 
 //        //Part 3 HomeController 5 SOME OF THIS IS RIGHT! I need to figure out where to put .get and look at <Optionals>
         Optional<Employer> targetEmployer = employerRepository.findById(employerId); //keep this
-        Iterable<Skill> targetSkill = skillRepository.findAllById(skills); //not sure what to do with this yet
+        List<Skill> skillObjs = (List<Skill>)skillRepository.findAllById(skills); 
         Employer employer = targetEmployer.get();
+        newJob.setSkills(skillObjs);
         newJob.setEmployer(employer); //passes employerId into job table
         jobRepository.save(newJob);
         return "redirect:";
