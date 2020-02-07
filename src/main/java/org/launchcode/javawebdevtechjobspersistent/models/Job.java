@@ -12,7 +12,7 @@ public class Job extends AbstractEntity{ //from part 3 inherits id and name fiel
 
 //    private String skills;
 
-    @ManyToMany(mappedBy = "jobs")
+    @ManyToMany
     private List<Skill> skills = new ArrayList<>();
 
     public Job() {
