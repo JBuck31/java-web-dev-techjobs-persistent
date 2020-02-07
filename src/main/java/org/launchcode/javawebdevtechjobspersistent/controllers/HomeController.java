@@ -62,7 +62,7 @@ public class HomeController {
         Iterable<Skill> targetSkill = skillRepository.findAllById(skills); //not sure what to do with this yet
         Employer employer = targetEmployer.get();
         newJob.setEmployer(employer); //passes employerId into job table
-        jobRepository.save(newJob);   //fix this?
+        jobRepository.save(newJob);
         return "redirect:";
     }
 
