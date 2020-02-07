@@ -59,7 +59,7 @@ public class HomeController {
 
 //        //Part 3 HomeController 5 SOME OF THIS IS RIGHT! I need to figure out where to put .get and look at <Optionals>
         Optional<Employer> targetEmployer = employerRepository.findById(employerId); //keep this
-        List<Skill> skillObjs = (List<Skill>)skillRepository.findAllById(skills); 
+        List<Skill> skillObjs = (List<Skill>)skillRepository.findAllById(skills);
         Employer employer = targetEmployer.get();
         newJob.setSkills(skillObjs);
         newJob.setEmployer(employer); //passes employerId into job table
