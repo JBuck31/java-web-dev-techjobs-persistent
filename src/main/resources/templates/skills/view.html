@@ -12,12 +12,12 @@
     <p th:text="${'Name: ' + skill.name}"></p>
     <p th:text="${'Description: ' + skill.description}"></p>
 
-    <!--PUT THIS BACK IN AFTER DOING JOBS! -->
-<!--    <p> Jobs:-->
-<!--        <ul>-->
-<!--            <li th:each="job : ${skill.jobs}">-->
-<!--                <a th:href="@{'/view/' + ${job.id}}" th:text="${job.name}"></a>-->
-<!--            </li>-->
-<!--        </ul>-->
-<!--    </p>-->
-<!--</div>-->
+
+<p> Jobs:
+<ul>
+    <li th:each="job : ${skill.jobs}">
+        <a th:href="@{'/view/' + ${job.id}}" th:text="${job.name}"></a>
+    </li>
+</ul>
+</p>
+</div>
