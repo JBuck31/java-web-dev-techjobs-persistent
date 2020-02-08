@@ -25,8 +25,8 @@ public class Job extends AbstractEntity{ //from part 3 inherits id and name fiel
     }
 
     // Getters and setters. Refactored in part 3
-    public String getEmployer() {
-        return String.valueOf(employer);
+    public Employer getEmployer() { //changed from String to Employer
+        return employer;
     }
 
     public void setEmployer(Employer employer) {
